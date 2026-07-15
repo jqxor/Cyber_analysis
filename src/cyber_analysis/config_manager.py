@@ -281,7 +281,7 @@ class ConfigManager:
         self.local_model = LocalModelConfig(
             base_url=str(lm.get("base_url", "http://localhost:11434/v1")),
             model=str(lm.get("model", "qwen2.5:1.5b")),
-            concurrency=int(lm.get("concurrency", 10)),
+            concurrency=int(lm.get("concurrency", 200)),
         )
 
         pl = raw.get("pipeline", {})
