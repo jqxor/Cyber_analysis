@@ -9,7 +9,7 @@
 <h1 align="center">Cyber Analysis</h1>
 
 <p align="center">
-  <b>千万级网络流量分析系统</b> — 大小模型双层漏斗架构，本地小 LLM 初筛 + API 大 LLM 深析
+  <b>AI驱动的网络流量分析器</b> — 大小模型双层漏斗架构，本地小 LLM 初筛 + API 大 LLM 深析
 </p>
 
 ---
@@ -21,13 +21,12 @@
     │
     ▼
 ┌──────────────────────────────────────┐
-│        Tier 1: 本地小 LLM             │
-│  Ollama · qwen2.5:1.5b · 200 并发     │
-│  并行初筛，过滤 ~80% 误报              │
+│        Tier 1: 本地小 LLM             
+│  并行初筛，过滤 ~80% 误报              
 ├──────────────────────────────────────┤
-│        Tier 2: API 大 LLM             │
-│  DeepSeek / OpenAI / 自定义           │
-│  调度 6 专家 → 综合报告 → ATT&CK+IOC   │
+│        Tier 2: API 大 LLM             
+│  提供DeepSeek / OpenAI / 自定义等接口  
+│  调度 6 专家 → 综合报告 → ATT&CK+IOC   
 └──────────────────────────────────────┘
 ```
 
@@ -41,12 +40,12 @@
 
 ## 功能特性
 
-- **双层漏斗** — 本地 Ollama 初筛 + API LLM 深析，成本降 10 倍
+- **双层漏斗** — 小模型 +  LLM大模型 深析
 - **6 大检测专家** — Beacon / DNS 隧道 / 端口扫描 / ICMP 信道 / 载荷外泄 / 威胁情报
-- **多格式支持** — CSV (IDS2018) / JSON (自定义场景) / PCAP (tshark/scapy 三层 DPI)
+- **多格式支持** — CSV  / JSON (自定义场景) / PCAP
 - **配置即用** — 单个 `config.toml` 管理所有参数，`traffic-analyze config set` 一键修改
 - **守护模式** — `--watch` 持续监控目录，新文件到达自动分析
-- **本地 AI** — Ollama 集成，qwen2.5:0.5b ~ 7b 按显存自由选择
+- **本地 AI** — 按显存自由选择模型
 
 ---
 
@@ -88,18 +87,18 @@ traffic-analyze scan data.csv --max 30
 
 ```toml
 [backend]
-provider = "deepseek"          # deepseek | openai | ollama | lmstudio | custom
+provider = "deepseek"          # 根据实际模型调用进行修改
 model    = "deepseek-chat"
 api_key  = ""                  # 你的 Key
 
 [local_model]
-model       = "qwen2.5:1.5b"  # Ollama 模型 (0.5b / 1.5b / 3b / 7b)
+model       = "your_model"     # 本地模型
 concurrency = 200              # Tier 1 并发数
 
 [pipeline]
 input_dir              = "./input"
 output_dir             = "./output"
-max_api_calls_per_file = 50   # 控制 API 成本上限
+max_api_calls_per_file = 50  # 单次并发最大读取文件数
 ```
 
 ---
@@ -107,12 +106,12 @@ max_api_calls_per_file = 50   # 控制 API 成本上限
 ## CLI 命令
 
 ```bash
-traffic-analyze scan <path>              # 自动识别文件/目录/格式
-traffic-analyze analyze-ids <csv> --max 50  # IDS2018 标签对比
-traffic-analyze pipeline --watch         # 管道持续监控
-traffic-analyze daemon --watch ./data    # 文件守护
-traffic-analyze config show              # 查看当前配置
-traffic-analyze list-experts             # 专家模块列表
+traffic-analyze scan <path>                 # 自动识别文件/目录/格式
+traffic-analyze analyze-ids <csv> --max 50  # 标签对比
+traffic-analyze pipeline --watch            # 管道持续监控
+traffic-analyze daemon --watch ./data       # 文件守护
+traffic-analyze config show                 # 查看当前配置
+traffic-analyze list-experts                # 专家模块列表
 ```
 
 ---
@@ -148,7 +147,7 @@ Cyber_analysis/
 PCAP 文件
     │  tshark (Wireshark DPI)     ← 优先
     │  scapy (Python DPI)         ← 备选
-    │  纯 Python (HTTP/DNS/TLS)    ← 兜底
+    │  Python (HTTP/DNS/TLS)      ← 兜底
     ▼
 流重组 → 特征提取 → Tier 1 初筛 → Tier 2 深析 → 报告
 ```
