@@ -1,4 +1,4 @@
-# Python-generated files
+# Python
 __pycache__/
 *.py[oc]
 build/
@@ -6,23 +6,46 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
-.venv
+# Virtual environment
+.venv/
 
-# Secrets
+# Secrets — DO NOT COMMIT
 .env
+config.toml
 config.json
+*.key
+*.pem
+*.crt
+credentials*
 
-# Data / logs
+# API keys / tokens (catch-all)
+*secret*
+*token*
+*api_key*
+
+# Data directories
 data/
 logs/
 input/
 output/
+reports/
+
+# Runtime state
 *.scan_state.json
 *.pipeline_state.json
 .python-version
 
-# IDE
+# UV lock (regenerate per-machine)
+uv.lock
+
+# IDE / Editor
 .zcode/
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
