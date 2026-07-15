@@ -66,8 +66,8 @@
 
 ```shell
 # 1. 克隆
-git clone https://github.com/jqxor/Cyber_Analysis.git
-cd Cyber_Analysis
+git clone https://github.com/jqxor/Cyber_analysis.git
+cd Cyber_analysis
 
 # 2. 安装依赖
 uv sync
@@ -119,7 +119,7 @@ traffic-analyze list-experts                # 专家模块列表
 ## 项目结构
 
 ```
-Cyber_Analysis/
+Cyber_analysis/
 ├── config.toml.example         # 配置模板
 ├── pyproject.toml              # 项目 & CLI 入口
 ├── traffic-analyze.bat         # Windows 快捷入口
