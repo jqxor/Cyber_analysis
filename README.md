@@ -64,7 +64,7 @@
 
 ## 快速开始
 
-```bash
+```shell
 # 1. 克隆
 git clone https://github.com/jqxor/Cyber_analysis.git
 cd Cyber_analysis
@@ -105,7 +105,7 @@ max_api_calls_per_file = 50  # 单次并发最大读取文件数
 
 ## CLI 命令
 
-```bash
+```shell 
 traffic-analyze scan <path>                 # 自动识别文件/目录/格式
 traffic-analyze analyze-ids <csv> --max 50  # 标签对比
 traffic-analyze pipeline --watch            # 管道持续监控
