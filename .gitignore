@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets
+.env
+config.json
+
+# Data / logs
+data/
+logs/
+input/
+output/
+*.scan_state.json
+*.pipeline_state.json
+.python-version
+
+# IDE
+.zcode/
+.vscode/
+.idea/
