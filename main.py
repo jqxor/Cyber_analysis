@@ -4,11 +4,11 @@ import sys
 import time
 from pathlib import Path
 
-from src.traffic_analysis.logger import setup_file_logging, get_logger
-from src.traffic_analysis.llm_config import Config
-from src.traffic_analysis.orchestrator import LLMOrchestrator
-from src.traffic_analysis.session_loader import load_json_sessions
-from src.traffic_analysis.report_formatter import format_report_console, format_separator
+from src.cyber_analysis.logger import setup_file_logging, get_logger
+from src.cyber_analysis.llm_config import Config
+from src.cyber_analysis.orchestrator import LLMOrchestrator
+from src.cyber_analysis.session_loader import load_json_sessions
+from src.cyber_analysis.report_formatter import format_report_console, format_separator
 
 logger = get_logger(__name__)
 

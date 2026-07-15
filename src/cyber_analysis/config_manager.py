@@ -83,9 +83,9 @@ def _write_default_config(path: Path) -> dict[str, dict[str, Any]]:
         # ╚══════════════════════════════════════════════════════════╝
         #
         # 使用方法:
-        #   traffic-analyze config show           查看当前配置
-        #   traffic-analyze config set <key> <v>  修改配置项
-        #   traffic-analyze config init           重新生成配置文件
+        #   cyber-analyze config show           查看当前配置
+        #   cyber-analyze config set <key> <v>  修改配置项
+        #   cyber-analyze config init           重新生成配置文件
 
         [backend]
         # 后端提供商: deepseek | openai | ollama | lmstudio | custom

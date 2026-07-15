@@ -2,7 +2,7 @@ import logging
 import sys
 from pathlib import Path
 
-LOGGER_NAME = "traffic_analysis"
+LOGGER_NAME = "cyber_analysis"
 
 _initialized = False
 

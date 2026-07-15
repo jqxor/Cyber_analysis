@@ -44,7 +44,7 @@
 - **双层漏斗** — 本地 Ollama 初筛 + API LLM 深析，成本降 10 倍
 - **6 大检测专家** — Beacon / DNS 隧道 / 端口扫描 / ICMP 信道 / 载荷外泄 / 威胁情报
 - **多格式支持** — CSV (IDS2018) / JSON (自定义场景) / PCAP (tshark/scapy 三层 DPI)
-- **配置即用** — 单个 `config.toml` 管理所有参数，`traffic-analyze config set` 一键修改
+- **配置即用** — 单个 `config.toml` 管理所有参数，`cyber-analyze config set` 一键修改
 - **守护模式** — `--watch` 持续监控目录，新文件到达自动分析
 - **本地 AI** — Ollama 集成，qwen2.5:0.5b ~ 7b 按显存自由选择
 
@@ -75,13 +75,13 @@ uv sync
 
 # 3. 配置
 cp config.toml.example config.toml
-traffic-analyze config set backend.api_key sk-your-key
+cyber-analyze config set backend.api_key sk-your-key
 
 # 4. (可选) 启动本地 Ollama
 ollama pull qwen2.5:1.5b
 
 # 5. 分析
-traffic-analyze scan data.csv --max 30
+cyber-analyze scan data.csv --max 30
 ```
 
 ## 配置
@@ -107,12 +107,12 @@ max_api_calls_per_file = 50   # 控制 API 成本上限
 ## CLI 命令
 
 ```bash
-traffic-analyze scan <path>              # 自动识别文件/目录/格式
-traffic-analyze analyze-ids <csv> --max 50  # IDS2018 标签对比
-traffic-analyze pipeline --watch         # 管道持续监控
-traffic-analyze daemon --watch ./data    # 文件守护
-traffic-analyze config show              # 查看当前配置
-traffic-analyze list-experts             # 专家模块列表
+cyber-analyze scan <path>              # 自动识别文件/目录/格式
+cyber-analyze analyze-ids <csv> --max 50  # IDS2018 标签对比
+cyber-analyze pipeline --watch         # 管道持续监控
+cyber-analyze daemon --watch ./data    # 文件守护
+cyber-analyze config show              # 查看当前配置
+cyber-analyze list-experts             # 专家模块列表
 ```
 
 ---
@@ -123,9 +123,9 @@ traffic-analyze list-experts             # 专家模块列表
 Cyber_analysis/
 ├── config.toml.example         # 配置模板
 ├── pyproject.toml              # 项目 & CLI 入口
-├── traffic-analyze.bat         # Windows 快捷入口
+├── cyber-analyze.bat         # Windows 快捷入口
 ├── main.py / daemon.py         # 旧版入口 (兼容)
-└── src/traffic_analysis/
+└── src/cyber_analysis/
     ├── cli.py                  # CLI 主入口 (6 子命令)
     ├── orchestrator.py         # 大小模型调度器
     ├── triage_pipeline.py      # Tier1 → Tier2 漏斗

@@ -24,7 +24,7 @@ SCANNABLE_EXTS = {".csv", ".json", ".pcap", ".pcapng", ".cap"}
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="traffic-analyze",
+        prog="cyber-analyze",
         description="流量分析系统",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -33,7 +33,7 @@ def _build_parser() -> argparse.ArgumentParser:
 
     p_scan = sub.add_parser("scan", help="分析流量 (自动识别文件/目录/格式)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="traffic-analyze scan data.csv --max 30")
+        epilog="cyber-analyze scan data.csv --max 30")
     p_scan.add_argument("path", nargs="?", default=".", help="文件或目录路径")
     p_scan.add_argument("--max", "-m", type=int, default=50, help="最大 LLM 调用次数")
     p_scan.add_argument("--backend", "-b", help="指定后端")
@@ -72,7 +72,7 @@ def main() -> None:
     parser = _build_parser()
     args = parser.parse_args()
     if args.version:
-        print(f"traffic-analyze v{VERSION}")
+        print(f"cyber-analyze v{VERSION}")
         return
     if args.command is None:
         parser.print_help()
@@ -89,7 +89,7 @@ def _ensure_backend() -> "Config":
     if not config.is_ready:
         config.auto_detect()
     if not config.is_ready:
-        print("  [!!] 未发现 LLM 后端: traffic-analyze config set backend.api_key <key>")
+        print("  [!!] 未发现 LLM 后端: cyber-analyze config set backend.api_key <key>")
         sys.exit(1)
     return config
 
@@ -107,7 +107,7 @@ def _cmd_config(args) -> None:
     }
     act = actions.get(args.config_action)
     if act: act()
-    else: print("  用法: traffic-analyze config {show|set|init|path}")
+    else: print("  用法: cyber-analyze config {show|set|init|path}")
 
 
 def _config_set(cfg: ConfigManager, key: str, value: str) -> None:

@@ -6,10 +6,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional
 
-from src.traffic_analysis.llm_config import Config
-from src.traffic_analysis.logger import get_logger
-from src.traffic_analysis.orchestrator import LLMOrchestrator
-from src.traffic_analysis.report_formatter import format_zeek_finding
+from src.cyber_analysis.llm_config import Config
+from src.cyber_analysis.logger import get_logger
+from src.cyber_analysis.orchestrator import LLMOrchestrator
+from src.cyber_analysis.report_formatter import format_zeek_finding
 
 from .constants import (
     BRUTEFORCE_PORTS,
