@@ -1,7 +1,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/LLM-双模型协作-FF6B35?logo=openai&logoColor=white" alt="LLM"/>
-  <img src="https://img.shields.io/badge/Ollama-本地推理-000000?logo=ollama&logoColor=white" alt="Ollama"/>
   <img src="https://img.shields.io/badge/PCAP-深度解析-34A853" alt="PCAP"/>
   <img src="https://img.shields.io/badge/MIT-License-blue" alt="License"/>
 </p>
@@ -9,7 +8,7 @@
 <h1 align="center">Cyber Analysis</h1>
 
 <p align="center">
-  <b>千万级网络流量分析系统</b> — 大小模型双层漏斗架构，本地小 LLM 初筛 + API 大 LLM 深析
+  <b>Ai驱动的网络流量分析器</b> — 大小模型双层漏斗架构，本地小 LLM 初筛 + API 大 LLM 深析
 </p>
 
 ---
@@ -21,19 +20,19 @@
     │
     ▼
 ┌──────────────────────────────────────┐
-│        Tier 1: 本地小 LLM             │
-│  Ollama · qwen2.5:1.5b · 200 并发     │
-│  并行初筛，过滤 ~80% 误报              │
+│        Tier 1: 本地小 LLM             
+│  Ollama · qwen2.5:1.5b · 200 并发     
+│  并行初筛，过滤 ~80% 误报              
 ├──────────────────────────────────────┤
-│        Tier 2: API 大 LLM             │
-│  DeepSeek / OpenAI / 自定义           │
-│  调度 6 专家 → 综合报告 → ATT&CK+IOC   │
+│        Tier 2: API 大 LLM             
+│  DeepSeek / OpenAI / 自定义           
+│  调度 6 专家 → 综合报告 → ATT&CK+IOC   
 └──────────────────────────────────────┘
 ```
 
 核心原则：
 
-- **Tier 1** 本地零成本过滤，只把真正可疑的流量上报
+- **Tier 1** 小模型过滤，只把真正可疑的流量上报
 - **Tier 2** 大模型理解上下文，6 专家并行检测后统一研判
 - **管道** 输入目录 → 初筛 → 深析 → 输出目录，全自动闭环
 
@@ -41,12 +40,11 @@
 
 ## 功能特性
 
-- **双层漏斗** — 本地 Ollama 初筛 + API LLM 深析，成本降 10 倍
+- **双层漏斗** — 小模型 初筛 + API LLM 深析
 - **6 大检测专家** — Beacon / DNS 隧道 / 端口扫描 / ICMP 信道 / 载荷外泄 / 威胁情报
 - **多格式支持** — CSV (IDS2018) / JSON (自定义场景) / PCAP (tshark/scapy 三层 DPI)
 - **配置即用** — 单个 `config.toml` 管理所有参数，`cyber-analyze config set` 一键修改
 - **守护模式** — `--watch` 持续监控目录，新文件到达自动分析
-- **本地 AI** — Ollama 集成，qwen2.5:0.5b ~ 7b 按显存自由选择
 
 ---
 
@@ -93,7 +91,7 @@ model    = "deepseek-chat"
 api_key  = ""                  # 你的 Key
 
 [local_model]
-model       = "qwen2.5:1.5b"  # Ollama 模型 (0.5b / 1.5b / 3b / 7b)
+model       = "your_model"     #你的本地模型,也可以根据实际要求去更换云端
 concurrency = 200              # Tier 1 并发数
 
 [pipeline]
@@ -137,7 +135,7 @@ Cyber_analysis/
         ├── analyzers.py        # DNS/PortScan/ICMP/Payload
         ├── beacon_detector.py  # C2 Beacon
         ├── threat_intel.py     # 威胁情报
-        └── local_expert.py     # Ollama 本地专家
+        └── local_expert.py     # 本地专家
 ```
 
 ---
@@ -148,7 +146,7 @@ Cyber_analysis/
 PCAP 文件
     │  tshark (Wireshark DPI)     ← 优先
     │  scapy (Python DPI)         ← 备选
-    │  纯 Python (HTTP/DNS/TLS)    ← 兜底
+    │  Python (HTTP/DNS/TLS)    ← 兜底
     ▼
 流重组 → 特征提取 → Tier 1 初筛 → Tier 2 深析 → 报告
 ```
