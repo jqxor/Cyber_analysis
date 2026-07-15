@@ -6,11 +6,11 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from src.traffic_analysis.flow_loader import FlowLoader, flow_to_session
-from src.traffic_analysis.llm_config import Config
-from src.traffic_analysis.logger import setup_file_logging, get_logger
-from src.traffic_analysis.orchestrator import LLMOrchestrator, FinalReport
-from src.traffic_analysis.session_loader import load_json_sessions_daemon
+from src.cyber_analysis.flow_loader import FlowLoader, flow_to_session
+from src.cyber_analysis.llm_config import Config
+from src.cyber_analysis.logger import setup_file_logging, get_logger
+from src.cyber_analysis.orchestrator import LLMOrchestrator, FinalReport
+from src.cyber_analysis.session_loader import load_json_sessions_daemon
 
 logger = get_logger("daemon")
 

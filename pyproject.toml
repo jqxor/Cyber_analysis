@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "traffic-analysis"
+name = "cyber_analysis"
 version = "0.2.0"
 description = "AI驱动的网络流量分析器 — 大小模型双层漏斗架构"
 requires-python = ">=3.12"
@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-traffic-analyze = "traffic_analysis.cli:main"
+cyber-analyze = "cyber_analysis.cli:main"
 
 [dependency-groups]
 dev = [
