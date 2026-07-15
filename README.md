@@ -21,12 +21,12 @@
     │
     ▼
 ┌──────────────────────────────────────┐
-│        Tier 1: 本地小 LLM             
-│  并行初筛，过滤 ~80% 误报              
+│        Tier 1: 本地小 LLM             │
+│  并行初筛，过滤 ~80% 误报              │
 ├──────────────────────────────────────┤
-│        Tier 2: API 大 LLM             
-│  提供DeepSeek / OpenAI / 自定义等接口  
-│  调度 6 专家 → 综合报告 → ATT&CK+IOC   
+│        Tier 2: API 大 LLM             │
+│  提供DeepSeek / OpenAI / 自定义等接口  │
+│  调度 6 专家 → 综合报告 → ATT&CK+IOC   │
 └──────────────────────────────────────┘
 ```
 
@@ -66,8 +66,8 @@
 
 ```shell
 # 1. 克隆
-git clone https://github.com/jqxor/Cyber_analysis.git
-cd Cyber_analysis
+git clone https://github.com/jqxor/Cyber_Analysis.git
+cd Cyber_Analysis
 
 # 2. 安装依赖
 uv sync
@@ -119,7 +119,7 @@ traffic-analyze list-experts                # 专家模块列表
 ## 项目结构
 
 ```
-Cyber_analysis/
+Cyber_Analysis/
 ├── config.toml.example         # 配置模板
 ├── pyproject.toml              # 项目 & CLI 入口
 ├── traffic-analyze.bat         # Windows 快捷入口

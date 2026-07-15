@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "traffic-analysis"
 version = "0.2.0"
-description = "千万级网络流量分析 — 大小模型调度系统"
+description = "AI驱动的网络流量分析器 — 大小模型双层漏斗架构"
 requires-python = ">=3.12"
 dependencies = [
     "httpx>=0.28.1",
