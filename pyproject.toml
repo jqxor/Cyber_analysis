@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-cyber-analyze = "cyber_analysis.cli:main"
+cyber-analyze = "traffic_analysis.cli:main"
 
 [dependency-groups]
 dev = [
